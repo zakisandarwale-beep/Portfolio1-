@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zaki Sanderwale - Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      background: linear-gradient(135deg, #5f9ea0, #004080);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    header h1 {
+      margin: 10px 0 0 0;
+      font-size: 36px;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-top: 5px;
+    }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      object-fit: cover;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    .profile-pic:hover {
+      transform: scale(1.05);
+    }
+    .container {
+      width: 85%;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px;
+    }
+    h2 {
+      border-left: 5px solid #0066cc;
+      padding-left: 10px;
+      margin-top: 30px;
+      color: #004080;
+      transition: 0.3s;
+    }
+    h2:hover {
+      color: #0066cc;
+      transform: translateX(5px);
+    }
+    .section {
+      background: #fff;
+      padding: 20px;
+      margin-top: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
+      color: #333;
+    }
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    thead, tbody, tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    th, td {
+      border: 2px solid #ddd;
+      padding: 12px;
+      text-align: center;
+      word-wrap: break-word;
+    }
+    th {
+      background: #0066cc;
+      color: white;
+      font-weight: bold;
+    }
+    tr:hover {
+      background: #f1f9ff;
+    }
+    
+    /* Mobile Responsive Table */
+    @media (max-width: 768px) {
+      table {
+        display: none !important; /* Hide the original table structure */
+      }
+      .mobile-education {
+        display: block !important;
+      }
+      .mobile-card {
+        border: 2px solid #0066cc;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        padding: 15px;
+        background: #f9f9f9;
+      }
+      .mobile-card p {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+      .mobile-label {
+        color: #0066cc;
+        font-weight: bold;
+        display: inline-block;
+        width: 100px;
+      }
+    }
+    
+    /* Desktop - hide mobile version */
+    .mobile-education {
+      display: none;
+    }
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    li {
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    li:hover {
+      color: #0066cc;
+      transform: translateX(5px);
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+   /* a:hover {
+    text-decoration: underline;
+    color: #004080;
+    }*/
+    .btn {
+      display: inline-block;
+      background: #0066cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #004080;
+    }
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: #fff;
+      color: #004080;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .toggle-btn:hover {
+      background: #ddd;
+    }
+    
+    /* Dark Mode - Fixed */
+    .dark-mode {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      color: #f1f1f1;
+    }
+    .dark-mode .section {
+      background: #404040;
+      color: #f1f1f1;
+      box-shadow: 0 8px 10px rgb(64,50,90);
+    }
+    .dark-mode .section:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    }
+    .dark-mode h2 {
+      color: #7d92f0;
+      border-left-color: #66ff;
+    }
+    .dark-mode h2:hover {
+      color: #99ccff;
+    }
+    .dark-mode th {
+      background: #404040;
+    }
+    .dark-mode td {
+      border-color: #444;
+      color: #f1f1f1;
+    }
+    .dark-mode tr:hover {
+      background: #333;
+    }
+    
+    /* Dark mode mobile education cards */
+    .dark-mode .mobile-card {
+      background: #2b2b2b !important;
+      border-color: #66b2ff !important;
+      color: #f1f1f1;
+    }
+    .dark-mode .mobile-label {
+      color: #66b2ff !important;
+    }
+    .dark-mode a {
+      color: #66b2ff;
+    }
+    .dark-mode a:hover {
+      color: #99ccff;
+    }
+    .dark-mode .btn {
+      background: #404040;
+      color: #f1f1f1;
+    }
+    .dark-mode .btn:hover {
+      background: #555;
+    }
+    .dark-mode header {
+      background: linear-gradient(135deg, #222, #111);
+    }
+    .dark-mode .toggle-btn {
+      background: #404040;
+      color: #f1f1f1;
+    }
+    .dark-mode .toggle-btn:hover {
+      background: #555;
+    }
+    .dark-mode li:hover {
+      color: #66b2ff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="toggle-btn" onclick="toggleMode()" id="toggleBtn">🌙 Dark Mode</button>
+    <img src="zaki-photo.jpg" alt="Zaki Sanderwale" class="profile-pic">
+    <h1>Zaki Sanderwale</h1>
+    <p class="subtitle">Aspiring Software Engineer | BCA Student</p>
+  </header>
+
+  <div class="container">
+    <!-- Objective -->
+    <div class="section">
+      <h2>Objective</h2>
+      <p>
+        I am a dedicated and curious learner with a passion for technology and software development. 
+        Currently pursuing a Bachelor's in Computer Applications, I aim to specialize in 
+        modern web development and cloud deployment, creating impactful and efficient digital solutions.
+      </p>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="section">
+      <h2>Contact Information</h2>
+      <p><b>Email:</b> zakisanderwale@gmail.com</p>
+      <p><b>Mobile:</b> +91 7483026025</p>
+      <p><b>Address:</b> Tiq Nal Tot, Kudachi, Raibag, Belgaum, Karnataka, India</p>
+      <p><b>LinkedIn:</b> <a href="#">linkedin.com/in/zakisanderwale</a></p>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <h2>Education</h2>
+      
+      <!-- Desktop Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>Qualification</th>
+            <th>Year</th>
+            <th>Percentage</th>
+            <th>Institution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10th</td>
+            <td>2022</td>
+            <td>85%</td>
+            <td>Junnediya High School, Kudachi</td>
+          </tr>
+          <tr>
+            <td>12th (PUC Science)</td>
+            <td>2024</td>
+            <td>70%</td>
+            <td>B Shankaranand PU College, Kudachi</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- Mobile Cards -->
+      <div class="mobile-education">
+        <div class="mobile-card">
+          <p><span class="mobile-label">Qualification:</span> 10th</p>
+          <p><span class="mobile-label">Year:</span> 2022</p>
+          <p><span class="mobile-label">Percentage:</span> 85%</p>
+          <p><span class="mobile-label">Institution:</span> Junnediya High School, Kudachi</p>
+        </div>
+        <div class="mobile-card">
+          <p><span class="mobile-label">Qualification:</span> 12th (PUC Science)</p>
+          <p><span class="mobile-label">Year:</span> 2024</p>
+          <p><span class="mobile-label">Percentage:</span> 70%</p>
+          <p><span class="mobile-label">Institution:</span> B Shankaranand PU College, Kudachi</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Responsive Web Design</li>
+        <li>Problem Solving & Algorithms</li>
+        <li>Basic Java Programming</li>
+        <li>Git & Version Control</li>
+      </ul>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <h2>Projects</h2>
+      <ul>
+        <li><b>Personal Portfolio Website</b> - Responsive portfolio with dark mode toggle</li>
+        <li><b>Calculator App</b> - JavaScript-based calculator with modern UI</li>
+        <li><b>To-Do List App</b> - Dynamic task management application</li>
+      </ul>
+    </div>
+
+    <!-- Hobbies -->
+    <div class="section">
+      <h2>Hobbies</h2>
+      <ul>
+        <li>Coding and Web Development</li>
+        <li>Playing BGMI & Free Fire</li>
+        <li>Exploring Tech & AI</li>
+        <li>Travelling & Photography</li>
+      </ul>
+    </div>
+
+    <!-- Achievements & Awards -->
+    <div class="section">
+      <h2>Achievements & Awards</h2>
+      <ul>
+        <li>Secured 85% in SSLC Board Exams</li>
+        <li>70% in PUC Science Stream</li>
+        <li>Participated in Inter-College Coding Competition</li>
+        <li>Winner of School-Level Science Quiz</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("dark-mode");
+      const toggleBtn = document.getElementById("toggleBtn");
+      
+      if (document.body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "☀️ Light Mode";
+      } else {
+        toggleBtn.textContent = "🌙 Dark Mode";
+      }
+    }
+    
+    function downloadResume() {
+      // Option 1: Generate and download a simple text resume
+      const resumeContent = `
+ZAKI SANDERWALE
+Aspiring Software Engineer | BCA Student
+
+Contact Information:
+Email: zakisanderwale@gmail.com
+Mobile: +91 7483026025
+Address: Tiq Nal Tot, Kudachi, Raibag, Belgaum, Karnataka, India
+LinkedIn: linkedin.com/in/zakisanderwale
+
+Objective:
+I am a dedicated and curious learner with a passion for technology and software development. Currently pursuing a Bachelor's in Computer Applications, I aim to specialize in modern web development and cloud deployment, creating impactful and efficient digital solutions.
+
+Education:
+• 10th - 2022 - 85% - Junnediya High School, Kudachi
+• 12th (PUC Science) - 2024 - 70% - B Shankaranand PU College, Kudachi
+
+Skills:
+• HTML, CSS, JavaScript
+• Responsive Web Design
+• Problem Solving & Algorithms
+• Basic Java Programming
+• Git & Version Control
+
+Projects:
+• Personal Portfolio Website - Responsive portfolio with dark mode toggle
+• Calculator App - JavaScript-based calculator with modern UI
+• To-Do List App - Dynamic task management application
+
+Hobbies:
+• Coding and Web Development
+• Playing BGMI & Free Fire
+• Exploring Tech & AI
+• Travelling & Photography
+
+Achievements & Awards:
+• Secured 85% in SSLC Board Exams
+• 70% in PUC Science Stream
+• Participated in Inter-College Coding Competition
+• Winner of School-Level Science Quiz
+      `;
+      
+      const blob = new Blob([resumeContent], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'Zaki_Sanderwale_Resume.txt';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    }
+  </script>
+
+</body>
+</html>
